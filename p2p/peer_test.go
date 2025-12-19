@@ -57,7 +57,7 @@ func uintID(i uint16) enode.ID {
 	return id
 }
 
-// newNode creates a node record with the given address.
+// newNode creates a node record with the given address. 不涉及逻辑交互，只是拼接地址
 func newNode(id enode.ID, addr string) *enode.Node {
 	var r enr.Record
 	// Set the port if present.

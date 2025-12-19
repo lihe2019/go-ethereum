@@ -99,7 +99,7 @@ type dialScheduler struct {
 	cancel        context.CancelFunc
 	ctx           context.Context
 	nodesIn       chan *enode.Node
-	doneCh        chan *dialTask
+	doneCh        chan *dialTask // 需要做啥任务呢？
 	addStaticCh   chan *enode.Node
 	remStaticCh   chan *enode.Node
 	addPeerCh     chan *conn
@@ -160,6 +160,7 @@ func (cfg dialConfig) withDefaults() dialConfig {
 	return cfg
 }
 
+// dial为啥还需要scheduler
 func newDialScheduler(config dialConfig, it enode.Iterator, setupFunc dialSetupFunc) *dialScheduler {
 	cfg := config.withDefaults()
 	d := &dialScheduler{
@@ -229,6 +230,7 @@ func (d *dialScheduler) loop(it enode.Iterator) {
 		nodesCh chan *enode.Node
 	)
 
+	// 为啥要用这种语法，必要性？
 loop:
 	for {
 		// Launch new dials if slots are available.

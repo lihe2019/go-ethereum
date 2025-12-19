@@ -52,6 +52,7 @@ func TestDialSchedDynDial(t *testing.T) {
 				{flags: dynDialedConn, node: newNode(uintID(0x01), "")},
 				{flags: dynDialedConn, node: newNode(uintID(0x02), "")},
 			},
+			// todo(lihe): 为啥可以用一个地址
 			discovered: []*enode.Node{
 				newNode(uintID(0x00), "127.0.0.1:30303"), // not dialed because already connected as static peer
 				newNode(uintID(0x02), "127.0.0.1:30303"), // ...
